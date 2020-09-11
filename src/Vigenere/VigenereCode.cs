@@ -11,6 +11,7 @@ namespace Vigenere.Library
         public VigenereCode(string codeWord, int salt)
         {
             this.codeWord = codeWord;
+            this.salt = salt;
         }
         public string Encrypt(string encryptedPrhase)
         {
@@ -33,7 +34,7 @@ namespace Vigenere.Library
         public string Decrypt(string encryptedPrhase)
         {
             StringBuilder decrypted = new StringBuilder();
-            for (int i = 0; i <= encryptedPrhase.Length; i++)
+            for (int i = 0; i < encryptedPrhase.Length; i++)
             {
                 //Se obtiene la letra a desencriptar
                 string valueToDecrypt = encryptedPrhase[i].ToString().ToUpper();
@@ -57,6 +58,10 @@ namespace Vigenere.Library
         private string RevertShift(int shift, string charToShift)
         {
             int totalShift = GetLetterNumber(charToShift) - shift + fullAlphabet.Length;
+            if(totalShift < 0)
+            {
+                totalShift = 26 + totalShift; 
+            }
             char result = fullAlphabet[totalShift % fullAlphabet.Length];
             return result.ToString();
         }
@@ -82,6 +87,7 @@ namespace Vigenere.Library
             int result = 0;
             foreach (char c in fullAlphabet)
             {
+                result++;
                 if (c.ToString() == letter)
                 {
                     break;
