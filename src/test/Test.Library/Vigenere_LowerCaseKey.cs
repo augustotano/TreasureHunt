@@ -48,7 +48,7 @@ namespace Test.Library
         public void Decrypt_LowerCaseCode()
         {
             string result = vLowerCase.Decrypt("jtiatugcwcqhck");
-            Assert.AreEqual("programacionii",result);
+            Assert.AreEqual("PROGRAMACIONII",result);
         }
         [Test]
         public void Encrypt_LowerCaseCodey()
